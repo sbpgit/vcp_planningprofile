@@ -10,22 +10,28 @@
       "csrfProtection": false,
       "scope": {
         "GET": [
-          "$XSAPPNAME.User"
+          "$XSAPPNAME.User",
+          "$XSAPPNAME.admin"
         ],
         "PUT": [
-          "$XSAPPNAME.User"
+          "$XSAPPNAME.User",
+          "$XSAPPNAME.admin"
         ],
         "PATCH": [
-          "$XSAPPNAME.User"
+          "$XSAPPNAME.User",
+          "$XSAPPNAME.admin"
         ],
         "POST": [
-          "$XSAPPNAME.User"
+          "$XSAPPNAME.User",
+          "$XSAPPNAME.admin"
         ],
         "DELETE": [
-          "$XSAPPNAME.User"
+          "$XSAPPNAME.User",
+          "$XSAPPNAME.admin"
         ],
         "default": [
-          "$XSAPPNAME.User"
+          "$XSAPPNAME.User",
+          "$XSAPPNAME.admin"
         ]
       }
     },
