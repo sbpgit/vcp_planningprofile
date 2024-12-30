@@ -1,0 +1,156 @@
+<mvc:View controllerName="vcpapp.vcpplanningprofile.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+     xmlns="sap.m" xmlns:m="sap.m" xmlns:l="sap.ui.layout" xmlns:ux="sap.uxap" xmlns:f="sap.ui.layout.form"
+    xmlns:html="http://www.w3.org/1999/xhtml" xmlns:u="sap.ui.unified">
+    <Page id="idPPPage" showFooter="true" showHeader="false"  showNavButton="true" navButtonPress="onBack">
+      <Table id="idPlanProfile"  updateFinished="onTableUpdate" items="{path: '/PlanningProfiles'}"    
+                              mode="Delete" delete="deletePlanningProfiles" rememberSelections="false" sticky="HeaderToolbar">
+                              <headerToolbar>
+                                <OverflowToolbar height="80px">
+                                <SearchField id="newTabSearch" search="oHomesearch" liveChange="oHomesearch" width="200px" placeholder="Cluster, Planning Profile" />
+                                <ToolbarSpacer />
+                                <Button text="Reset" type="Transparent" press="onResetData" tooltip="Reset" />
+                                <Button icon="sap-icon://add" press="onAddtData" tooltip="Add new Profile" />
+                                </OverflowToolbar>
+                              </headerToolbar>                            
+                                <columns>
+                                    <Column hAlign="Center"  vAlign="Middle" >
+                                        <Text text="Clustering Profile" />
+                                    </Column>
+                                    <Column hAlign="Center"  vAlign="Middle" >
+                                        <Text text="Planning Profile" />
+                                    </Column>
+                                    <Column hAlign="Center"  vAlign="Middle" >
+                                        <Text text="Min Primary ID's" />
+                                    </Column>
+                                    <Column hAlign="Center"  vAlign="Middle" >
+                                        <Text text="Min Clusters" />
+                                    </Column>
+                                    <Column hAlign="Center" width="auto" vAlign="Middle">
+                                        <Text text="Max Clusters" />
+                                    </Column>
+                                    <Column hAlign="Center" width="auto" vAlign="Middle">
+                                        <Text text="Percentage" />
+                                    </Column>
+                                    <Column hAlign="Center" vAlign="Middle" width="100px">
+                                        <Text text="Past Periods" />
+                                    </Column>
+                                    <Column hAlign="Center" vAlign="Middle" width="auto">
+                                        <Text text="Future Periods" />
+                                    </Column>
+                                    <Column hAlign="Center" vAlign="Middle" width="auto">
+                                        <Text text="Threshold DMD" />
+                                    </Column>  
+                                    <Column visible="false">
+                                        <Text text="" />
+                                    </Column>  
+                                    <Column visible="false">
+                                        <Text text="" />
+                                    </Column>                      
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Input id="idClust" value= "{CLUSTERING_PROFILE}" liveChange="onInputChange" textAlign="Right" />
+                                            <Input id="idProfilePlan" value= "{PLANNING_PROFILE}" liveChange="onInputChange" textAlign="Right" />
+                                            <Input id="idMPID" value= "{MIMIMUM_PRIMARY_IDS}" type="Number" liveChange="onInputChange" textAlign="Right" />
+                                            <Input id="idMinClut" value= "{MINIMUM_CLUSTERS}" type="Number" liveChange="onInputChange" textAlign="Right" />
+                                            <Input id="idMaxClus" value= "{MAXIMUM_CLUSTERS}" type="Number" liveChange="onInputChange" textAlign="Right" />
+                                            <Input id="idPerce" value= "{PERCENTAGE}" type="Number" liveChange="onInputChange" textAlign="Right" />
+                                            <Input id="idPastP" value= "{PAST_PERIODS}" type="Number" liveChange="onInputChange" textAlign="Right" />
+                                            <Input id="idFutu" value= "{FUTURE_PERIODS}" type="Number" liveChange="onInputChange" textAlign="Right" />
+                                            <Input id="idThres" value= "{THRESHOLD_DMD}" type="Number" liveChange="onInputChange" textAlign="Right" />
+                                            <Text text="{EDITED}"/>
+                                            <Text text="{NEW}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                              </Table> 
+    <!-- <ux:ObjectPageLayout id="ObjectPageLayoutPP" showFooter="true" headerContentPinnable="true">
+       
+        <ux:sections>
+            <ux:ObjectPageSection id="idObjPageSec">
+                <ux:subSections>
+                    <ux:ObjectPageSubSection id="idObjPageSubSec">
+                        <ux:blocks>
+ 
+                         <Table id="idPlanProfile"  updateFinished="onTableUpdate" items="{path: '/PlanningProfiles'}"    
+                              mode="Delete" delete="deletePlanningProfiles" rememberSelections="false" sticky="HeaderToolbar">
+                              <headerToolbar>
+                                <OverflowToolbar height="80px">
+                                <SearchField id="newTabSearch" search="oHomesearch" liveChange="oHomesearch" width="200px" placeholder="Cluster, Planning Profile" />
+                                <ToolbarSpacer />
+                                <Button text="Reset" type="Transparent" press="onResetData" tooltip="Reset" />
+                                <Button icon="sap-icon://add" press="onAddtData" tooltip="Add new Profile" />
+                                </OverflowToolbar>
+                              </headerToolbar>                            
+                                <columns>
+                                    <Column hAlign="Center"  vAlign="Middle" >
+                                        <Text text="Clustering Profile" />
+                                    </Column>
+                                    <Column hAlign="Center"  vAlign="Middle" >
+                                        <Text text="Planning Profile" />
+                                    </Column>
+                                    <Column hAlign="Center"  vAlign="Middle" >
+                                        <Text text="Min Primary ID's" />
+                                    </Column>
+                                    <Column hAlign="Center"  vAlign="Middle" >
+                                        <Text text="Min Clusters" />
+                                    </Column>
+                                    <Column hAlign="Center" width="auto" vAlign="Middle">
+                                        <Text text="Max Clusters" />
+                                    </Column>
+                                    <Column hAlign="Center" width="auto" vAlign="Middle">
+                                        <Text text="Percentage" />
+                                    </Column>
+                                    <Column hAlign="Center" vAlign="Middle" width="100px">
+                                        <Text text="Past Periods" />
+                                    </Column>
+                                    <Column hAlign="Center" vAlign="Middle" width="auto">
+                                        <Text text="Future Periods" />
+                                    </Column>
+                                    <Column hAlign="Center" vAlign="Middle" width="auto">
+                                        <Text text="Threshold DMD" />
+                                    </Column>  
+                                    <Column visible="false">
+                                        <Text text="" />
+                                    </Column>  
+                                    <Column visible="false">
+                                        <Text text="" />
+                                    </Column>                      
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Input id="idClust" value= "{CLUSTERING_PROFILE}" liveChange="onInputChange" textAlign="Right" />
+                                            <Input id="idProfilePlan" value= "{PLANNING_PROFILE}" liveChange="onInputChange" textAlign="Right" />
+                                            <Input id="idMPID" value= "{MIMIMUM_PRIMARY_IDS}" type="Number" liveChange="onInputChange" textAlign="Right" />
+                                            <Input id="idMinClut" value= "{MINIMUM_CLUSTERS}" type="Number" liveChange="onInputChange" textAlign="Right" />
+                                            <Input id="idMaxClus" value= "{MAXIMUM_CLUSTERS}" type="Number" liveChange="onInputChange" textAlign="Right" />
+                                            <Input id="idPerce" value= "{PERCENTAGE}" type="Number" liveChange="onInputChange" textAlign="Right" />
+                                            <Input id="idPastP" value= "{PAST_PERIODS}" type="Number" liveChange="onInputChange" textAlign="Right" />
+                                            <Input id="idFutu" value= "{FUTURE_PERIODS}" type="Number" liveChange="onInputChange" textAlign="Right" />
+                                            <Input id="idThres" value= "{THRESHOLD_DMD}" type="Number" liveChange="onInputChange" textAlign="Right" />
+                                            <Text text="{EDITED}"/>
+                                            <Text text="{NEW}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                              </Table>  
+                        </ux:blocks>
+                    </ux:ObjectPageSubSection>
+                </ux:subSections>
+            </ux:ObjectPageSection>
+        </ux:sections>
+    </ux:ObjectPageLayout> -->
+  <footer>
+    <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button id="idSave" text="Save" enabled="true" press="onPlanningProfileSave" type="Emphasized"/>
+                <!-- <Button text="Cancel"/> -->
+            </OverflowToolbar>
+            </footer>
+    </Page>
+</mvc:View>
+ 
+ 
